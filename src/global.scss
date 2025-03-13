@@ -1,37 +1,54 @@
-/*
- * App Global CSS
- * ----------------------------------------------------------------------------
- * Put style rules here that you want to apply globally. These styles are for
- * the entire app and not just one component. Additionally, this file can be
- * used as an entry point to import other CSS/Sass files to be included in the
- * output CSS.
- * For more information on global stylesheets, visit the documentation:
- * https://ionicframework.com/docs/layout/global-stylesheets
- */
-
-/* Core CSS required for Ionic components to work properly */
-@import "@ionic/angular/css/core.css";
-
-/* Basic CSS for apps built with Ionic */
-@import "@ionic/angular/css/normalize.css";
-@import "@ionic/angular/css/structure.css";
-@import "@ionic/angular/css/typography.css";
-@import "@ionic/angular/css/display.css";
-
-/* Optional CSS utils that can be commented out */
-@import "@ionic/angular/css/padding.css";
-@import "@ionic/angular/css/float-elements.css";
-@import "@ionic/angular/css/text-alignment.css";
-@import "@ionic/angular/css/text-transformation.css";
-@import "@ionic/angular/css/flex-utils.css";
-
-/**
- * Ionic Dark Mode
- * -----------------------------------------------------
- * For more info, please see:
- * https://ionicframework.com/docs/theming/dark-mode
- */
-
-/* @import "@ionic/angular/css/palettes/dark.always.css"; */
-/* @import "@ionic/angular/css/palettes/dark.class.css"; */
-@import '@ionic/angular/css/palettes/dark.system.css';
+/* Custom Theme */
+:root {
+    --ion-color-primary: #6366f1;
+    --ion-color-primary-rgb: 99, 102, 241;
+    --ion-color-primary-contrast: #ffffff;
+    --ion-color-primary-contrast-rgb: 255, 255, 255;
+    --ion-color-primary-shade: #5658d4;
+    --ion-color-primary-tint: #7375f2;
+  
+    --ion-color-secondary: #f472b6;
+    --ion-color-secondary-rgb: 244, 114, 182;
+    --ion-color-secondary-contrast: #000000;
+    --ion-color-secondary-contrast-rgb: 0, 0, 0;
+    --ion-color-secondary-shade: #d764a0;
+    --ion-color-secondary-tint: #f580bd;
+  
+    --ion-background-color: #f8fafc;
+    --ion-font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
+  }
+  
+  /* Shared Components */
+  .auth-card {
+    background: #ffffff;
+    border-radius: 24px;
+    padding: 2rem;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+    margin: 1rem;
+  }
+  
+  .input-highlight {
+    --border-radius: 12px;
+    --padding-start: 16px;
+    --padding-end: 16px;
+    --background: #f8fafc;
+    margin-bottom: 1.5rem;
+  
+    ion-icon {
+      color: var(--ion-color-medium);
+      margin-right: 12px;
+    }
+  }
+  
+  .gradient-bg {
+    background: linear-gradient(135deg, var(--ion-color-primary) 0%, var(--ion-color-secondary) 100%);
+  }
+  
+  .progress-indicator {
+    margin: 2rem 0;
+    ion-progress-bar {
+      --progress-background: var(--ion-color-primary);
+      height: 4px;
+      border-radius: 2px;
+    }
+  }

@@ -1,0 +1,103 @@
+
+<ion-header [translucent]="true" style="--background: #0B2447;">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/landing" style="--color: #A5D7E8;"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content class="gradient-bg" [fullscreen]="true" style="--background: linear-gradient(to bottom, #0B2447, #19376D);">
+  <div class="ion-padding" style="height: 100vh; display: flex; flex-direction: column; justify-content: center; gap: 2rem;">
+    
+   
+    <div class="auth-header" style="text-align: center; animation: fadeIn 1s ease-in-out;">
+      <h2 style="font-size: 2.5rem; font-weight: bold; color: #A5D7E8; margin-bottom: 1rem;">
+        Welcome Back
+      </h2>
+      <p style="color: #A5D7E8; opacity: 0.8; font-size: 1.1rem;">
+        Please sign in to continue
+      </p>
+    </div>
+
+   
+    <div class="auth-card" style="background: #19376D; padding: 2rem; border-radius: 16px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5); animation: fadeIn 1.2s ease-in-out;">
+      <form (ngSubmit)="onSubmit()">
+        
+ 
+        <ion-item class="input-highlight" style="--background: transparent; --color: #A5D7E8; border-bottom: 1px solid #576CBC; margin-bottom: 1.5rem;">
+          <ion-icon slot="start" name="mail-outline" style="color: #A5D7E8;"></ion-icon>
+          <ion-input 
+            [(ngModel)]="email" 
+            name="email" 
+            label="Email Address" 
+            type="email" 
+            labelPlacement="floating" 
+            required
+            style="--color: #A5D7E8;">
+          </ion-input>
+        </ion-item>
+
+       
+        <ion-item class="input-highlight" style="--background: transparent; --color: #A5D7E8; border-bottom: 1px solid #576CBC; margin-bottom: 2rem;">
+          <ion-icon slot="start" name="lock-closed-outline" style="color: #A5D7E8;"></ion-icon>
+          <ion-input 
+            [(ngModel)]="password" 
+            name="password" 
+            label="Password" 
+            type="password" 
+            labelPlacement="floating" 
+            required
+            style="--color: #A5D7E8;">
+          </ion-input>
+        </ion-item>
+
+   
+        <ion-button   (click)="navigateToRegistration()" expand="block" size="large" type="submit" shape="round"
+          style="--background: #576CBC; --border-radius: 14px; --box-shadow: 0 8px 20px rgba(87, 108, 188, 0.6); font-size: 1.1rem; font-weight: bold;">
+          Continue
+          <ion-icon slot="end" name="arrow-forward"></ion-icon>
+        </ion-button>
+      </form>
+
+      <div class="social-login" style="display: flex; justify-content: center; gap: 1rem; margin-top: 1.5rem;">
+        <ion-button fill="clear" class="social-button" style="--color: #A5D7E8;">
+          <ion-icon slot="icon-only" name="logo-google"></ion-icon>
+        </ion-button>
+        <ion-button fill="clear" class="social-button" style="--color: #A5D7E8;">
+          <ion-icon slot="icon-only" name="logo-apple"></ion-icon>
+        </ion-button>
+        <ion-button fill="clear" class="social-button" style="--color: #A5D7E8;">
+          <ion-icon slot="icon-only" name="logo-facebook"></ion-icon>
+        </ion-button>
+      </div>
+
+
+      <ion-text class="ion-text-center" style="color: #A5D7E8; font-size: 0.9rem; margin-top: 2rem;">
+        <p>Don't have an account? <a routerLink="/sign-up" (click)="navigateToSignup()" style="color: #576CBC; text-decoration: none; font-weight: bold;">Sign up</a></p>
+        <p><a routerLink="/reset-password" (click)="navigateToResetpassword()" style="color: #576CBC; text-decoration: none; font-weight: bold;">Forgot password?</a></p>
+
+      </ion-text>
+    </div>
+    
+  </div>
+</ion-content>
+
+
+<style>
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(-10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .auth-card {
+    animation: fadeIn 1.2s ease-in-out;
+  }
+</style>

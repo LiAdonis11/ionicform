@@ -1,0 +1,135 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/landing" style="--color: white"></ion-back-button>
+    </ion-buttons>
+    <ion-progress-bar [value]="progressValue" color="primary"></ion-progress-bar>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="gradient-bg" [fullscreen]="true">
+  <div class="ion-padding" style="height: 100vh; display: flex; flex-direction: column;">
+    <div class="auth-card" style="background: rgba(255, 255, 255, 0.9); border-radius: 15px; padding: 2rem; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);">
+      
+
+      <div *ngIf="currentStep === 1">
+        <div class="ion-text-center ion-margin-bottom">
+          <ion-icon name="person-circle" style="font-size: 3rem; color: var(--ion-color-primary);"></ion-icon>
+          <h2 style="font-size: 1.75rem; font-weight: 600; color: #333;">Personal Information</h2>
+          <p style="color: #555;">Fill out your basic details</p>
+        </div>
+
+        <form (ngSubmit)="nextStep()">
+          <ion-item class="input-highlight">
+            <ion-icon slot="start" name="person-outline"></ion-icon>
+            <ion-input label="Full Name" [(ngModel)]="registrationData.fullName" name="fullName" 
+                      labelPlacement="floating" required></ion-input>
+          </ion-item>
+
+          <ion-item class="input-highlight">
+            <ion-icon slot="start" name="calendar-outline"></ion-icon>
+            <ion-input label="Date of Birth" type="date" [(ngModel)]="registrationData.dob" name="dob" 
+                      labelPlacement="floating" required></ion-input>
+          </ion-item>
+
+          <ion-item class="input-highlight">
+            <ion-icon slot="start" name="call-outline"></ion-icon>
+            <ion-input label="Phone Number" type="tel" [(ngModel)]="registrationData.phone" name="phone" 
+                      labelPlacement="floating" required></ion-input>
+          </ion-item>
+
+          <ion-item class="input-highlight">
+            <ion-icon slot="start" name="mail-outline"></ion-icon>
+            <ion-input label="Email Address" type="email" [(ngModel)]="registrationData.email" name="email" 
+                      labelPlacement="floating" required></ion-input>
+          </ion-item>
+
+          <ion-button expand="block" size="large" type="submit" class="ion-margin-vertical" style="--background: var(--ion-color-primary);">
+            Next
+            <ion-icon slot="end" name="arrow-forward"></ion-icon>
+          </ion-button>
+        </form>
+      </div>
+
+
+      <div *ngIf="currentStep === 2">
+        <div class="ion-text-center ion-margin-bottom">
+          <ion-icon name="school-outline" style="font-size: 3rem; color: var(--ion-color-primary);"></ion-icon>
+          <h2 style="font-size: 1.75rem; font-weight: 600; color: #333;">Educational Background</h2>
+          <p style="color: #555;">Provide your academic details</p>
+        </div>
+
+        <form (ngSubmit)="nextStep()">
+          <ion-item class="input-highlight">
+            <ion-icon slot="start" name="business-outline"></ion-icon>
+            <ion-input label="High School Name" [(ngModel)]="registrationData.highSchool" name="highSchool" 
+                      labelPlacement="floating" required></ion-input>
+          </ion-item>
+
+          <ion-item class="input-highlight">
+            <ion-icon slot="start" name="calendar-outline"></ion-icon>
+            <ion-input label="Year Graduated" type="number" [(ngModel)]="registrationData.gradYear" name="gradYear" 
+                      labelPlacement="floating" required></ion-input>
+          </ion-item>
+
+          <ion-item class="input-highlight">
+            <ion-icon slot="start" name="ribbon-outline"></ion-icon>
+            <ion-input label="GPA / Average Grade" type="text" [(ngModel)]="registrationData.gpa" name="gpa" 
+                      labelPlacement="floating" required></ion-input>
+          </ion-item>
+
+          <ion-button expand="block" size="large" type="submit" class="ion-margin-vertical" style="--background: var(--ion-color-primary);">
+            Next
+            <ion-icon slot="end" name="arrow-forward"></ion-icon>
+          </ion-button>
+        </form>
+      </div>
+
+      <div *ngIf="currentStep === 3">
+        <div class="ion-text-center ion-margin-bottom">
+          <ion-icon name="options-outline" style="font-size: 3rem; color: var(--ion-color-primary);"></ion-icon>
+          <h2 style="font-size: 1.75rem; font-weight: 600; color: #333;">Course & Preferences</h2>
+          <p style="color: #555;">Choose your desired program</p>
+        </div>
+
+        <form (ngSubmit)="onSubmit()">
+          <ion-item class="input-highlight">
+            <ion-icon slot="start" name="school-outline"></ion-icon>
+            <ion-select label="Preferred Course" [(ngModel)]="registrationData.course" name="course" 
+                       labelPlacement="floating" interface="popover">
+              <ion-select-option value="cs">Computer Science</ion-select-option>
+              <ion-select-option value="it">Information Technology</ion-select-option>
+              <ion-select-option value="eng">Engineering</ion-select-option>
+              <ion-select-option value="bus">Business Administration</ion-select-option>
+            </ion-select>
+          </ion-item>
+
+          <ion-item class="input-highlight">
+            <ion-icon slot="start" name="location-outline"></ion-icon>
+            <ion-select label="Campus Location" [(ngModel)]="registrationData.campus" name="campus" 
+                       labelPlacement="floating" interface="popover">
+              <ion-select-option value="main">Main Campus</ion-select-option>
+              <ion-select-option value="north">Tagudin Campus</ion-select-option>
+              <ion-select-option value="south">Cervantes Campus</ion-select-option>
+            </ion-select>
+          </ion-item>
+
+          <ion-item class="input-highlight">
+            <ion-icon slot="start" name="document-text-outline"></ion-icon>
+            <ion-toggle [(ngModel)]="registrationData.scholarship" name="scholarship"></ion-toggle>
+            <ion-label class="ion-text-wrap">Apply for a Scholarship</ion-label>
+          </ion-item>
+
+          <ion-button expand="block" size="large" type="submit" class="ion-margin-vertical" style="--background: var(--ion-color-primary);">
+            Submit Application
+            <ion-icon slot="end" name="checkmark"></ion-icon>
+          </ion-button>
+        </form>
+      </div>
+
+      <ion-text class="ion-text-center">
+        <p>Already applied? <a routerLink="/status" style="text-decoration: none; color: var(--ion-color-primary);">Check Status</a></p>
+      </ion-text>
+    </div>
+  </div>
+</ion-content>

@@ -1,0 +1,113 @@
+
+<ion-header [translucent]="true" style="--background: #0B2447;">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/landing" style="--color: #A5D7E8;"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content class="gradient-bg" [fullscreen]="true" style="--background: linear-gradient(to bottom, #0B2447, #19376D);">
+  <div class="ion-padding" style="height: 100vh; display: flex; flex-direction: column; justify-content: center; gap: 2rem;">
+    
+  
+    <div class="auth-card" style="background: #19376D; padding: 2.5rem; border-radius: 16px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5); animation: fadeIn 1s ease-in-out;">
+      
+   
+      <h2 style="font-size: 2.25rem; font-weight: bold; color: #A5D7E8; text-align: center; margin-bottom: 2rem;">
+        Create Account
+      </h2>
+
+   
+      <form (ngSubmit)="onSubmit()">
+        
+    
+        <ion-item class="input-highlight" style="--background: transparent; --color: #A5D7E8; border-bottom: 1px solid #576CBC; margin-bottom: 1.5rem;">
+          <ion-icon slot="start" name="person-outline" style="color: #A5D7E8;"></ion-icon>
+          <ion-input 
+            [(ngModel)]="fullName" 
+            name="fullName" 
+            label="Full Name" 
+            labelPlacement="floating" 
+            required
+            style="--color: #A5D7E8;">
+          </ion-input>
+        </ion-item>
+
+      
+        <ion-item class="input-highlight" style="--background: transparent; --color: #A5D7E8; border-bottom: 1px solid #576CBC; margin-bottom: 1.5rem;">
+          <ion-icon slot="start" name="mail-outline" style="color: #A5D7E8;"></ion-icon>
+          <ion-input 
+            [(ngModel)]="email" 
+            name="email" 
+            label="Email Address" 
+            type="email" 
+            labelPlacement="floating" 
+            required
+            style="--color: #A5D7E8;">
+          </ion-input>
+        </ion-item>
+
+     
+        <ion-item class="input-highlight" style="--background: transparent; --color: #A5D7E8; border-bottom: 1px solid #576CBC; margin-bottom: 2rem;">
+          <ion-icon slot="start" name="lock-closed-outline" style="color: #A5D7E8;"></ion-icon>
+          <ion-input 
+            [(ngModel)]="password" 
+            name="password" 
+            label="Password" 
+            type="password" 
+            labelPlacement="floating" 
+            required
+            style="--color: #A5D7E8;">
+          </ion-input>
+        </ion-item>
+
+    
+        <ion-button (click)="navigateToRegistration()" expand="block" size="large" type="submit" shape="round"
+          style="--background: #576CBC; --border-radius: 14px; --box-shadow: 0 8px 20px rgba(87, 108, 188, 0.6); font-size: 1.1rem; font-weight: bold;">
+          Get Started
+          <ion-icon slot="end" name="arrow-forward"></ion-icon>
+        </ion-button>
+      </form>
+
+
+      <ion-text class="ion-text-center" style="color: #A5D7E8; font-size: 0.9rem; margin-top: 2rem;">
+        <p>By continuing, you agree to our 
+          <a href="#" style="color: #576CBC; text-decoration: none; font-weight: bold;">
+            Terms of Service
+          </a>
+        </p>
+        <p>Already have an account? 
+          <a (click)="navigateToSignin()" style="color: #576CBC; text-decoration: none; font-weight: bold;">
+            Sign in
+          </a>
+        </p>
+      </ion-text>
+
+    </div>
+  </div>
+</ion-content>
+
+
+<style>
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(-10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .auth-card {
+    animation: fadeIn 1s ease-in-out;
+  }
+
+  ion-button:hover {
+    transform: scale(1.05);
+    transition: 0.3s ease-in-out;
+  }
+</style>
